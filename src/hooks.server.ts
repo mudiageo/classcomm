@@ -6,7 +6,7 @@ import { redirect } from '@sveltejs/kit'
 const protectedRoutes = {
 	'/route': {
 		allowedRoles: ['role'],
-	},,
+	},
 }
 
 export async function handle({ event, resolve }) {
