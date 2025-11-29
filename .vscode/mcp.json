@@ -1,7 +1,36 @@
 {
 	"servers": {
-		"svelte": {
-			"url": "https://mcp.svelte.dev/mcp"
+		"github": {
+			"type": "http",
+			"url": "https://api.githubcopilot.com/mcp/"
+		},
+		"better-auth-mcp": {
+			"url": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp",
+			"type": "http"
+		},
+		"svelte-remote-mcp-server": {
+			"url": "https://mcp.svelte.dev/mcp",
+			"type": "http"
+		},
+		"shadcn-ui-svelte": {
+			"type": "stdio",
+			"command": "pnpx",
+			"args": [
+				"@jpisnice/shadcn-ui-mcp-server",
+				"--framework",
+				"svelte",
+			],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github-api-key}"
+			}
 		}
-	}
+	},
+	"inputs": [
+		{
+			"id": "github-api-key",
+			"type": "promptString",
+			"description": "Personal access token for GitHub API access",
+			"password": true
+		}
+	]
 }

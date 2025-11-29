@@ -1,23 +1,37 @@
-You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
+You are able to use the following MCP servers to assist with development. Here is how to use their available tools effectively:
 
-## Available MCP Tools:
+## 1. Svelte MCP Server
+Access comprehensive Svelte 5 and SvelteKit documentation.
 
-### 1. list-sections
+### Tools:
+*   **list-sections**: Use FIRST to discover documentation sections. Returns titles, use_cases, and paths.
+*   **get-documentation**: Retrieves full content. Use after `list-sections` to fetch relevant details.
+*   **svelte-autofixer**: Analyzes Svelte code for issues. MUST use before sending code to user.
+*   **playground-link**: Generates a Svelte Playground link. Use only upon user request.
 
-Use this FIRST to discover all available documentation sections. Returns a structured list with titles, use_cases, and paths.
-When asked about Svelte or SvelteKit topics, ALWAYS use this tool at the start of the chat to find relevant sections.
+## 2. Better Auth MCP Server
+Manage authentication setup, testing, and monitoring.
 
-### 2. get-documentation
+### Tools:
+*   **analyze_project**: Analyze project structure for auth recommendations.
+*   **setup_better_auth**: Configure authentication providers and adapters.
+*   **test_auth_flows**: Validate login, registration, and other auth flows.
+*   **get_integration_guide**: Get framework-specific setup guides (e.g., for SvelteKit).
+*   **get_auth_examples**: Get code snippets for auth implementation.
 
-Retrieves full documentation content for specific sections. Accepts single or multiple sections.
-After calling the list-sections tool, you MUST analyze the returned documentation sections (especially the use_cases field) and then use the get-documentation tool to fetch ALL documentation sections that are relevant for the user's task.
+## 3. Shadcn UI Svelte MCP Server
+Access `shadcn/ui` component code and context for Svelte.
 
-### 3. svelte-autofixer
+### Tools:
+*   **get_component**: Retrieve source code for specific components (e.g., `button`, `dialog`).
+*   **search_components**: Find components by description or name.
+*   **list_components**: List all available components.
 
-Analyzes Svelte code and returns issues and suggestions.
-You MUST use this tool whenever writing Svelte code before sending it to the user. Keep calling it until no issues or suggestions are returned.
+## 4. GitHub MCP Server
+Interact with GitHub repositories and context.
 
-### 4. playground-link
-
-Generates a Svelte Playground link with the provided code.
-After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+### Tools:
+*   **list_repositories**: List accessible repositories.
+*   **search_code**: Search for code within repositories.
+*   **get_issue** / **create_issue**: Manage issue tracking.
+*   **create_pull_request**: Create PRs for changes.
