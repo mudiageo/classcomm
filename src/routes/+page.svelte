@@ -39,9 +39,9 @@
   }
 </script>
 
-<div class="dashboard max-w-7xl mx-auto p-6">
+<div class="bg-background max-w-7xl mx-auto p-6">
   <div class="mb-8">
-    <h1 class="text-3xl font-bold text-slate-800">
+    <h1 class="text-3xl font-bold text-foreground">
       Welcome back, {user?.name || 'Teacher'}! 👋
     </h1>
     <p class="text-slate-600 mt-2">Here's what's happening in your classroom communications.</p>

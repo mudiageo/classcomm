@@ -16,22 +16,16 @@
 
   onMount(() => {
       initDB();
-      
-      // Subscribe to sync state
-      const unsubscribe = syncEngine.subscribe(state => {
-        syncState = state;
-      });
-      
+            
       return () => {
-        unsubscribe();
         syncEngine.destroy();
       };
   });
 </script>
 
 <ModeWatcher />
-<div class="app min-h-screen bg-slate-50">
-  <header class="bg-white shadow-sm border-b border-slate-200 px-6 py-4 flex justify-between items-center">
+<div class="app min-h-screen bg-backgrond">
+  <header class="bg-background shadow-sm border-b border-slate-200 px-6 py-4 flex justify-between items-center">
     <h1 class="text-xl font-bold text-slate-800">ClassComm</h1>
     {#if syncState.isSyncing}
       <div class="flex items-center gap-2 text-sm text-blue-600 bg-blue-50 px-3 py-1 rounded-full animate-pulse">

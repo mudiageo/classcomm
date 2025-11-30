@@ -1,7 +1,7 @@
 import { query, command, getRequestEvent } from '$app/server';
 import * as v from 'valibot';
 import { syncEngine as serverSync } from '$lib/server/sync';
-import { auth } from '$lib/auth';
+import { auth } from '$lib/server/auth';
 
 
 // Validation schemas
@@ -10,7 +10,7 @@ const SyncOperationSchema = v.object({
     table: v.string(),
     operation: v.picklist(['insert', 'update', 'delete']),
     data: v.any(),
-    timestamp: v.date(),
+    timestamp: v.number(),
     clientId: v.string(),
     version: v.number(),
     status: v.picklist(['pending', 'synced', 'error'])
@@ -20,7 +20,7 @@ const SyncOperationsArraySchema = v.array(SyncOperationSchema);
 
 // Push local changes to server
 export const pushChanges = command(
-    v.array(SyncOperationsArraySchema),
+    SyncOperationsArraySchema,
     async (operations) => {
         const { request } = getRequestEvent()
         const userId = await getUserId(request);
